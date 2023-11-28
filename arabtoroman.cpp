@@ -32,3 +32,72 @@ int main() {
   cout << "Арабское число: " << number << endl;
   return 0;
 }
+
+int main() {
+  char roman;
+  int arabic = 0;
+  cout << "Римское число: ";
+  while (cin.get(roman)) {
+    if (arabic > 100) {
+      cout << "" << endl;
+      return 0;
+    }
+  
+    else if (roman == 'C') {
+      roman = cin.peek();
+      if (roman == 'M' || roman == 'D') {
+        arabic = arabic - 100;
+      } else {
+        arabic = arabic + 100;
+      }
+    }
+
+    else if (roman == 'L') {
+      roman = cin.peek();
+      if (roman == 'M' || roman == 'D' || roman == 'C') {
+        arabic = arabic - 50;
+        continue;
+      } else {
+        arabic = arabic + 50;
+        continue;
+      }
+    }
+    
+    else if (roman == 'X') {
+      roman = cin.peek();
+      if (roman == 'M' || roman == 'D' || roman == 'C' || roman == 'L') {
+        arabic = arabic - 10;
+        continue;
+      } else {
+        arabic = arabic + 10;
+        continue;
+      }
+    }
+    
+    else if (roman == 'V') {
+      roman = cin.peek();
+      if (roman == 'M' || roman == 'D' || roman == 'C' || roman == 'L' || roman == 'X') {
+        arabic = arabic - 5;
+        continue;
+      } else {
+        arabic = arabic + 5;
+        continue;
+      }
+    }
+    
+    else if (roman == 'I') {
+      roman = cin.peek();
+      if (roman == 'M' || roman == 'D' || roman == 'C' || roman == 'L'|| roman == 'X' || roman == 'V') {
+        arabic = arabic - 1;
+        continue;
+      } else {
+        arabic = arabic + 1;
+        continue;
+      }
+    } else {
+    break;
+    }
+  }
+  cout << arabic << endl;
+  return 0;
+}
